@@ -3,18 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Basic DataGrid - jQuery EasyUI Demo</title>
-	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyui/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyui/jquery-easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="../demo.css">
-	<script type="text/javascript" src="../../jquery.min.js"></script>
-	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/static/easyui/jquery-easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/easyui/jquery-easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
 	<h2>Basic DataGrid</h2>
 	<p>The DataGrid is created from markup, no JavaScript code needed.</p>
+
+    <a href="http://192.168.56.102:8080/goods">gogo</a>
+
 	<div style="margin:20px 0;"></div>
 	
-	<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px"
+	<!--<table class="easyui-datagrid" title="Basic DataGrid" style="width:700px;height:250px"
 			data-options="singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'">
 		<thead>
 			<tr>
@@ -26,7 +29,64 @@
 				<th data-options="field:'status',width:60,align:'center'">Status</th>
 			</tr>
 		</thead>
-	</table>
+	</table>-->
+	{{.json}}
+	<table id="datagrid"></table>
 
+    <br>
+    <br>
+
+    <table id="datagrid2"></table>
+
+    <script type="text/javascript">
+      $(function () {
+
+             // $("#datagrid").datagrid({
+             //     title:'用户列表',
+             //     url:'/goods',
+             //     method:'get',
+             //     pagination:true,
+             //     fitColumns:true,
+             //     striped:true,
+             //     rownumbers:true,
+             //     singleSelect:true,
+             //     idField:'Id',
+             //     pagination:true,
+             //     pageSize:20,
+             //     pageList:[10,20,30,50,100],
+             //     columns:[[
+             //         {field:'Itemid',title:'itemid',width:50},
+             //         {field:'Productid',title:'productid',width:100},
+             //         {field:'Listprice',title:'listprice',width:100},
+             //         {field:'Unitcost',title:'unitcost',width:100},
+             //         {field:'Attr1',title:'attr1',width:150},
+             //         {field:'Status',title:'status',width:150},
+             //     ]],
+             //     onLoadSuccess:function(data){
+             //        alert(data.total,data.rows)
+             //     }
+             //
+             // })
+
+          $("#datagrid2").datagrid({
+              url:'/goods',
+              method:'get',
+              fitColumns:false,
+              striped:true,
+              rownumbers:true,
+              idField:'Id',
+              columns:[[
+                  {field:'Id',title:'ID',hidden:true},
+                  {field:'Title',title:'显示名',width:150},
+                  {field:'Name',title:'应用名',width:150}
+              ]],
+              onLoadSuccess:function(data){
+                 alert(111111)
+              }
+          });
+
+      })
+
+    </script>
 </body>
 </html>
